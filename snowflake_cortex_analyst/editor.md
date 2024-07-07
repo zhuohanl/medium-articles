@@ -6,7 +6,7 @@ Using Snowflake Copilot and Cortex AI
 
 At enterprises, a typical data flow looks as below:
 
-![data flow](pictures/dataflow.png)
+![dataflow](pictures/dataflow.png)
 
 Data from different source systems get ingested / compiled into a central data platform. Data processing follows next to transform the data into a good shape. Then analysts work on SQL queries and create dashboards to generate insights which will be consumed by business users. 
 
@@ -16,7 +16,7 @@ While there is a space to improve on every single step, we observed something in
 
 Previously, for each business use case we built individual tables which corresponds to individual dashboards. 
 
-![data flow interation 1](pictures/dataflow_iteration_1.png)
+![dataflow_iteration_1](pictures/dataflow_iteration_1.png)
 
 We found some issues with this approach as time goes on:
 - First, as we have more and more dashboards (depite the fact that we have all these dashboards located at a central repo), users still find it difficult to locate the insights that they exactly need; 
@@ -27,7 +27,7 @@ We found some issues with this approach as time goes on:
 
 To resolve these issues, we came up with Iteration 2. We took an initiative to consolidate and create a single point of reference for both the data layer and dashboard layer
 
-![data flow interation 2](pictures/dataflow_iteration_2.png)
+![dataflow_iteration_2](pictures/dataflow_iteration_2.png)
 
 First, we created a **unified data asset** by modelling the existing datasets from various source systems. This unified data layer serves as a golden data asset for the downstream to consume;
 
@@ -45,7 +45,7 @@ We are looking for a solution which can be working in this way - when a user ask
 
 In a latest experiment, we tried utilizing [Snowflake Copilot](https://docs.snowflake.com/en/user-guide/snowflake-copilot) and [Snowflake Cortex Analyst](https://www.snowflake.com/en/data-cloud/cortex/) to help achieve this.
 
-![data flow interation 3](pictures/dataflow_iteration_3.png)
+![dataflow_iteration_3](pictures/dataflow_iteration_3.png)
 
 # Snowflake Copilot and Snowflake Cortex Analyst
 
@@ -71,7 +71,7 @@ To gain access to the features, we opened a Snowflake **Innovation Account** in 
 We also had the help from Snowflake team to enable **Cortex Analyst** in the account.
 
 While our data stays in the production account in Australia Sydney region, we can access the new features in the innovation account in US West region:
-![innovation account](pictures/innovation_account.png)
+![innovation_account](pictures/innovation_account.png)
 
 As these Snowflake features roll out to other regions including Australia Sydney, enterprises might be able to the access them within existing account(s).
 
@@ -80,7 +80,28 @@ As these Snowflake features roll out to other regions including Australia Sydney
 
 To utilize Snowflake Copilot, we need to make sure we have the dataset (at least the schema of the dataset) located within the same Snowflake Account.
 
-For the experiment, we have 
+For the experiment, within the innovation account, we have an existing sample dataset `INNOVATION_BDS_ENTERPRISE.PUBLISHED_DATA.RETAIL_TRANSACTION_DATASET`.
+![sample_dataset](pictures/sample_dataset.png)
+
+We can use Snowflake Copilot by following these steps:
+
+1. Create a new worksheet or open an existing worksheet.
+
+2. Select "Ask Copilot" in the lower-right corner of the worksheet. 
+![ask_copilot](pictures/ask_copilot.png)
+The Snowflake Copilot panel opens on the right side of the worksheet.
+![copilot_panel](pictures/copilot_panel.png)
+
+3. Go to the selector below the Snowflake Copilot message box, select the database and schema of our sample dataset
+![copilot_select_database_schema](pictures/copilot_select_database_schema.gif)
+
+4. In the message box, type in your question and then select the send icon or press Enter to submit it. Snowflake Copilot provides a response in the panel.
+![copilot_ask_question](pictures/copilot_ask_question.gif)
+
+5. If the response from Snowflake Copilot includes SQL statements:
+- Select Run to run the query. This adds the query to your worksheet and runs it.
+- Select Add to edit the query before running it. This adds the query to your worksheet.
+![copilot_add_query_to_console](pictures/copilot_add_query_to_console.gif)
 
 # LLM Assistant using Snowflake Cortex Analyst
 
