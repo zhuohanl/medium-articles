@@ -395,3 +395,9 @@ When a user asks a question:
 3. GPT4 will then generate a response including (1) SQL query to answer the user question, and (2) a text-based explanation about the query. The response will travel back to the user along the way.
 
 In such way, the Streamlit app can convert human natural language into SQL, text answers and charts.
+
+## Demo of Streamlit app
+
+![final_demo_1](pictures/final_demo_1.gif)
+
+![final_demo_2](pictures/final_demo_2.gif)
