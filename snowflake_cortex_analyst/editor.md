@@ -386,4 +386,12 @@ Once the feature goes to Public Preview, the code will be available as part of S
 
 ![cortex_analyst_interact_with_streamlit](pictures/cortex_analyst_interact_with_streamlit.png)
 
-When a user asks a question, 
+When a user asks a question:
+
+1. The Streamlit app will send the question to Cortex API. 
+
+2. Behind the scene, Cortex API will call a prompt service to create user prompt based on the question, and then send the user prompt together with its knowledge about the table (including table DDLs and the semantic model YAML as mentioned above in step 1 and 2) to Azure OpenAI GPT4.
+
+3. GPT4 will then generate a response including (1) SQL query to answer the user question, and (2) a text-based explanation about the query. The response will travel back to the user along the way.
+
+In such way, the Streamlit app can convert human natural language into SQL, text answers and charts.
